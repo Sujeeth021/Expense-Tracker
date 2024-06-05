@@ -1,94 +1,110 @@
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background-image: linear-gradient(to bottom, #eaeaea, #ffffff);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+/* Import a font from Google Fonts (replace with your chosen font) */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
 
-.container {
-  width: 100%;
-  max-width: 600px;
-  padding: 30px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  padding: 20px;
+  background-color: #e0ebeb; /* Light gray */
+  font-family: 'Lato', sans-serif;
+  margin: 0;
 }
 
 h1 {
+  grid-row: 1;
   text-align: center;
-  margin-bottom: 30px;
-  color: #007bff;
+  color: #3f51b5; /* Dark blue */
 }
 
-.form-group {
-  margin-bottom: 25px;
+.expense-tracker {
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 20px;
+  margin: 0 auto; /* Center the card horizontally */
+  max-width: 600px; /* Set a maximum width for responsiveness */
 }
 
-label {
-  display: block;
-  margin-bottom: 10px;
-  color: #555555;
+.form-container {
+  grid-row: 2;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.form-container.active {
+  opacity: 1;
+}
+
+.form-container label {
+  flex: 1;
+  margin-right: 10px;
   font-weight: bold;
 }
 
-input[type="number"],
-input[type="text"],
-select {
-  width: calc(100% - 10px);
-  padding: 15px;
-  border: 1px solid #ced4da;
-  border-radius: 6px;
-  transition: border-color 0.3s ease;
-  font-size: 16px;
+.form-container input,
+.form-container select {
+  flex: 2;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
 }
 
-input[type="number"]:focus,
-input[type="text"]:focus,
-select:focus {
-  border-color: #007bff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+.form-container input:focus,
+.form-container select:focus {
+  border-color: #3f51b5; /* Change border color on focus */
 }
 
-button {
-  width: 100%;
-  padding: 15px;
-  background-color: #007bff;
-  color: #ffffff;
+.form-container button {
+  padding: 10px 20px;
+  background-color: #3f51b5; /* Dark blue */
+  color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 16px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.form-container button:hover {
+  background-color: #303f9f; /* Darker blue on hover */
 }
 
-ul {
-  list-style-type: none;
+.transaction-list {
+  grid-row: 3;
+  list-style: none;
   padding: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-li {
-  margin-bottom: 20px;
-  padding: 20px;
-  background-color: #f0f0f0;
-  border-radius: 10px;
+.transaction-list.active {
+  opacity: 1;
+}
+
+.transaction-list li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer; /* Add hover effect for list items */
 }
 
-.balance {
+.transaction-list li:hover {
+  background-color: #ececec; /* Light gray on hover */
+}
+
+.debit {
+  color: #ff6363; /* Light red for debit transactions */
+}
+
+p {
+  grid-row: 4;
+  text-align: center;
   font-weight: bold;
-  font-size: 20px;
-  margin-top: 30px;
-  color: #007bff;
 }
